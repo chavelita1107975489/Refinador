@@ -1,0 +1,6 @@
+{
+  "name": "Refinador de Prompts Pro",
+  "description": "Una herramienta avanzada para analizar, estructurar y optimizar prompts utilizando técnicas Zero-shot, Few-shot y Chain-of-thought.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
