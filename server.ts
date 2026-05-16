@@ -49,8 +49,8 @@ Debes devolver la respuesta estrictamente en formato JSON con la siguiente estru
   "suggestions": ["Sugerencia 1", "Sugerencia 2"]
 }`;
 
-  console.log("Respuesta cruda del modelo:", result.text);
-      model: "gemini- 1.5 -pro",
+    const result = await ai.models.generateContent({
+      model: "gemini-3-flash-preview",
       contents: `Prompt original: ${prompt}\nTipo de tarea: ${taskType}`,
       config: {
         systemInstruction,
@@ -81,16 +81,8 @@ Debes devolver la respuesta estrictamente en formato JSON con la siguiente estru
       },
     });
 
-    let responseData;
-try {
-  responseData = JSON.parse(result.text);
-} catch (err) {
-  console.error("Error al parsear JSON:", err);
-  console.error("Texto recibido:", result.text);
-  return res.status(500).json({ error: "Formato inválido en la respuesta del modelo" });
-}
-res.json(responseData);
-
+    const responseData = JSON.parse(result.text);
+    res.json(responseData);
   } catch (error) {
     console.error("Gemini Error:", error);
     res.status(500).json({ error: "Failed to refine prompt" });

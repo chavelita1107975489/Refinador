@@ -68,33 +68,68 @@ export default function PromptInput({
   return (
     <div className="space-y-6">
       {/* Technique Selector */}
-      <div className="flex items-center gap-1 bg-[#111] p-1 rounded-lg border border-[#222] w-fit">
+      <div className="grid grid-cols-1 md:grid-cols-3 gap-3">
         <button
           onClick={() => onTechniqueChange('zero-shot')}
           className={cn(
-            "px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
-            technique === 'zero-shot' ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/10" : "text-gray-500 hover:text-gray-300"
+            "flex flex-col items-start gap-2 p-3 rounded-xl border text-left transition-all",
+            technique === 'zero-shot' 
+              ? "bg-[#161616] border-emerald-500/50 shadow-lg shadow-emerald-500/10" 
+              : "bg-[#111] border-[#222] hover:border-[#333] hover:bg-[#161616]"
           )}
         >
-          Zero-Shot
+          <span className={cn(
+            "text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5",
+            technique === 'zero-shot' ? "text-emerald-400" : "text-gray-400"
+          )}>
+            <Zap className="w-3.5 h-3.5" />
+            Zero-Shot
+          </span>
+          <p className="text-[10px] text-gray-500 leading-relaxed">
+            Ideal para instrucciones directas sin ejemplos previos. El modelo utiliza su conocimiento base para generar una respuesta inmediata y precisa.
+          </p>
         </button>
+
         <button
           onClick={() => onTechniqueChange('few-shot')}
           className={cn(
-            "px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
-            technique === 'few-shot' ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/10" : "text-gray-500 hover:text-gray-300"
+            "flex flex-col items-start gap-2 p-3 rounded-xl border text-left transition-all",
+            technique === 'few-shot' 
+              ? "bg-[#161616] border-emerald-500/50 shadow-lg shadow-emerald-500/10" 
+              : "bg-[#111] border-[#222] hover:border-[#333] hover:bg-[#161616]"
           )}
         >
-          Few-Shot
+          <span className={cn(
+            "text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5",
+            technique === 'few-shot' ? "text-emerald-400" : "text-gray-400"
+          )}>
+            <BookOpen className="w-3.5 h-3.5" />
+            Few-Shot
+          </span>
+          <p className="text-[10px] text-gray-500 leading-relaxed">
+            Proporciona ejemplos de entrada y salida para guiar al modelo, mejorando significativamente la precisión y el formato en tareas complejas.
+          </p>
         </button>
+
         <button
           onClick={() => onTechniqueChange('chain-of-thought')}
           className={cn(
-            "px-4 py-1.5 rounded text-[10px] font-bold uppercase tracking-wider transition-all",
-            technique === 'chain-of-thought' ? "bg-emerald-600 text-white shadow-lg shadow-emerald-500/10" : "text-gray-500 hover:text-gray-300"
+            "flex flex-col items-start gap-2 p-3 rounded-xl border text-left transition-all",
+            technique === 'chain-of-thought' 
+              ? "bg-[#161616] border-emerald-500/50 shadow-lg shadow-emerald-500/10" 
+              : "bg-[#111] border-[#222] hover:border-[#333] hover:bg-[#161616]"
           )}
         >
-          CoT
+          <span className={cn(
+            "text-[10px] font-bold uppercase tracking-wider flex items-center gap-1.5",
+            technique === 'chain-of-thought' ? "text-emerald-400" : "text-gray-400"
+          )}>
+            <Brain className="w-3.5 h-3.5" />
+            CoT
+          </span>
+          <p className="text-[10px] text-gray-500 leading-relaxed">
+            Fuerza al modelo a razonar paso a paso antes de responder. Excelente para problemas lógicos, matemáticos o análisis muy detallados.
+          </p>
         </button>
       </div>
 
